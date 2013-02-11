@@ -1,4 +1,4 @@
-/*global module:false, require:true */
+/*global module:false */
 module.exports = function (grunt) {
 	"use strict";
 	
@@ -13,7 +13,9 @@ module.exports = function (grunt) {
 			// Linting task runs RECESS without compilation, just for checking
 			// the contents of all .less files, to report any errors or warnings.
 			'lint': {
-				'src': 'styles/*.less',
+				'files': {
+					'src': 'styles/*.less'
+				},
 				'options': {
 					'compile': false,
 					'compress': false,
@@ -114,19 +116,9 @@ module.exports = function (grunt) {
 		},
 		
 		'copy': {
-			'html': {
-				'files': {
-					'build/index.htm': 'index.htm',
-					'build/.htaccess': '.htaccess'
-				}
-			},
-			'scripts': { 'files': { 'build/scripts/other/': 'scripts/other/*' } },
+			'html': { 'files': { 'build/layouts/': 'layouts/*.htm' } },
 			'images': { 'files': { 'build/images/': 'images/*' } },
-			'data': { 'files': { 'build/data/': 'data/*' } },
-			'css': { 'files': { 'build/styles/': 'styles/*.css' } },
-			'branding': { 'files': { 'build/branding/': 'branding/*' } },
-			'backend': { 'files': { 'build/backend/': 'backend/*' } },
-			'share': { 'files': { 'build/share/': 'share/*' } }
+			'css': { 'files': { 'build/styles/': 'styles/*.css' } }
 		},
 		
 		'watch': {
@@ -154,8 +146,8 @@ module.exports = function (grunt) {
 	
 	});
 	
-	grunt.registerTask('dev', ['clean:init', 'recess:lint', 'recess:dev', 'jshint:dev', 'concat', 'copy', 'watch']);
-	grunt.registerTask('release', ['clean:init', 'recess:lint', 'recess:release', 'jshint:release', 'uglify', 'copy']);
+	grunt.registerTask('dev', ['clean:init', 'recess:lint', 'recess:dev', /*'jshint:dev', 'concat',*/ 'copy:html', 'watch']);
+	grunt.registerTask('release', ['clean:init', 'recess:lint', 'recess:release', /*'jshint:release', 'uglify',*/ 'copy:html']);
 	grunt.registerTask('default', 'dev');
 	
 	/* ************************************************ */

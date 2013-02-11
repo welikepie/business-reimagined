@@ -1,0 +1,38 @@
+// SITE APPEARANCE
+// ----------------------------------------
+
+// Typography
+// Various settings for fonts used throughout the document
+// and their appropriate sizings.
+@base-font-family: "Helvetica Neue, Helvetica, Arial, sans-serif";
+@base-font-size: 14px;
+@base-font-lineheight: 16px;
+@base-font: ~"normal @{base-font-size}\/@{base-font-lineheight} @{base-font-family}";
+
+// Layout
+.layout (@type) when (@type = mobile) { @media (max-width: 599px) { .layout(@type, article, 320px, 1, "8px"); } }
+.layout (@type) when (@type = tablet) { @media (min-width: 600px) and (max-width: 1023px) { .layout(@type, article, 600px, 3, "8px"); } }
+.layout (@type) when (@type = desktop) { .layout(@type, article, 1024px, 3, "16px"); }
+
+.box-sizing (@type: content-box) {
+	-webkit-box-sizing: @arguments;
+	-moz-box-sizing: @arguments;
+	box-sizing: @arguments;
+}
+
+.layout (@_, @item-selector, @width: 100%, @columns: 1, @gutter: "0") {
+	position: relative;
+	display: block;
+	width: @width;
+	overflow: hidden;
+	
+	> @{item-selector} {
+		display: block;
+		float: left;
+		width: round(floor(@width * 1000 / @columns) / 1000, 3);
+		padding: e(@gutter);
+		overflow: hidden;
+		
+		.box-sizing(border-box);
+	}
+}
