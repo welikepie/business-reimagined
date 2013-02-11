@@ -4,9 +4,7 @@ module.exports = function (grunt) {
 	
 	grunt.initConfig({
 	
-		'clean': {
-			'init': ['build']
-		},
+		'clean': { 'init': ['build'] },
 		
 		'recess': {
 		
@@ -21,7 +19,8 @@ module.exports = function (grunt) {
 					'compress': false,
 					'noIDs': false,
 					'noUniversalSelectors': false,
-					'noOverqualifying': false
+					'noOverqualifying': false,
+					'strictPropertyOrder': false
 				}
 			},
 			
@@ -117,8 +116,9 @@ module.exports = function (grunt) {
 		
 		'copy': {
 			'html': { 'files': { 'build/layouts/': 'layouts/*.htm' } },
-			'images': { 'files': { 'build/images/': 'images/*' } },
-			'css': { 'files': { 'build/styles/': 'styles/*.css' } }
+			'images': { 'files': { 'build/images/': ['images/*.png', 'images/*.jpg'] } },
+			'scripts': { 'files': { 'build/scripts/': 'scripts/other/**/*' } }/*,
+			'css': { 'files': { 'build/styles/': 'styles/*.css' } }*/
 		},
 		
 		'watch': {
@@ -134,6 +134,10 @@ module.exports = function (grunt) {
 				'files': 'scripts/vendor/**/*.js',
 				'tasks': ['concat:vendor']
 			},
+			'js-other': {
+				'files': 'scripts/other/**/*.js',
+				'tasks': ['copy:scripts']
+			},
 			'html': {
 				'files': ['layouts/*.htm', 'layouts/*.html'],
 				'tasks': ['copy:html']
@@ -146,8 +150,8 @@ module.exports = function (grunt) {
 	
 	});
 	
-	grunt.registerTask('dev', ['clean:init', 'recess:lint', 'recess:dev', /*'jshint:dev', 'concat',*/ 'copy:html', 'watch']);
-	grunt.registerTask('release', ['clean:init', 'recess:lint', 'recess:release', /*'jshint:release', 'uglify',*/ 'copy:html']);
+	grunt.registerTask('dev', ['clean:init', 'recess:lint', 'recess:dev', 'jshint:dev', 'concat', 'copy', 'watch']);
+	grunt.registerTask('release', ['clean:init', 'recess:lint', 'recess:release', 'jshint:release', 'uglify', 'copy']);
 	grunt.registerTask('default', 'dev');
 	
 	/* ************************************************ */

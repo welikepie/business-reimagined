@@ -1,0 +1,14 @@
+@sprite-file: "../images/spritesheet.png";
+.sprite(@_, @offset-x, @offset-y, @width, @height) {
+	display: block;
+	width: @width;
+	height: @height;
+	overflow: hidden;
+	text-indent: -9999px;
+	background: url("@{sprite-file}") no-repeat (@offset-x * -1) (@offset-y * -1);
+}
+
+.sprite(@type) when (@type = logo) { .sprite(@type, 0, 0, 152px, 72px); }
+.sprite(@type) when (@type = twitter-share) { .sprite(@type, 152px, 0, 16px, 14px); }
+.sprite(@type) when (@type = facebook-share) { .sprite(@type, 152px, 14px, 12px, 14px); }
+.sprite(@type) when (@type = tags) { .sprite(@type, 152px, 28px, 12px, 12px); }
