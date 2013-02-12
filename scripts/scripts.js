@@ -2,21 +2,7 @@
 window.init = function () {
 	"use strict";
 
-	// Debounce function for decent handling of resizes
-	var debounce = function (func, timeout) {
-		var id = null;
-		return function () {
-			var that = this,
-				args = Array.prototype.slice.apply(arguments);
-			if (id) { window.clearTimeout(id); }
-			id = window.setTimeout(function () {
-				func.apply(that, args);
-				id = null;
-			}, timeout);
-		};
-	};
-
-	$('section#main').masonry({
+	$('section#main .listing').masonry({
 		'itemSelector': 'article',
 		'columnWidth': parseInt($('section#main .listing > article:not(.double)')
 				.css('width')
@@ -24,10 +10,22 @@ window.init = function () {
 		'gutterWidth': 16
 	});
 
-	/*$('#container').masonry({
-    // options
-    itemSelector : '.item',
-    columnWidth : 240
-  });*/
+	// Handlers for sharing functionality of posts in a listing.
+	// URL for sharing an appropriate post is already put in HREF attribute.
+	// When the script runs, just make the clicks open up a new window for
+	// the share.
+	$('a.share, .share a').on('click', function (ev) {
+
+		ev.preventDefault();
+		if (this.href) {
+			window.open(
+				this.href,
+				'SharingWindow',
+				'width=600,height=400'
+			);
+		}
+		return false;
+
+	});
 
 };
