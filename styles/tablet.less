@@ -34,7 +34,10 @@
 				overflow: hidden;
 
 				&.double { width: @tablet-width - @column-width - @tablet-gutter; }
-				&.video { height: 300px; }
+				&.video {
+					width: @tablet-width - @column-width - @tablet-gutter;
+					height: 300px;
+				}
 
 			}
 
