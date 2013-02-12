@@ -1,0 +1,44 @@
+@import 'config';
+
+@media (min-width: 700px) and (max-width: 1023px) {
+
+	@column-width: (@tablet-width - (@tablet-gutter * 2)) / 3;
+
+	body > header,
+	.banner .wrapper,
+	section#main,
+	body > footer .wrapper {
+		width: @tablet-width;
+	}
+
+	body > header nav {
+		float: none;
+		margin-top: 0;
+
+		text-align: right;
+		a + a { margin-left: @base-margin; }
+	}
+
+	section#main {
+
+		&.single { width: @tablet-width; }
+
+		.listing {
+			margin: 0 -@tablet-gutter 0 0;
+			overflow: hidden;
+
+			> article {
+
+				width: @column-width;
+				margin: 0 @tablet-gutter (@tablet-gutter * 2) 0;
+				overflow: hidden;
+
+				&.double { width: @tablet-width - @column-width - @tablet-gutter; }
+				&.video { height: 300px; }
+
+			}
+
+		}
+	}
+
+}
