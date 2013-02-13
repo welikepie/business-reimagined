@@ -18,7 +18,7 @@
 	<body <?php body_class(); ?>>
 
 		<header>
-			<h1>Business Reimagined</h1>
+			<a href="<?php echo(home_url('/')); ?>"><h1>Business Reimagined</h1></a>
 			<nav><?php
 			$items = wp_get_nav_menu_items('Top Nav');
 			foreach ($items as &$item) {
@@ -36,4 +36,4 @@
 			</div>
 		</div>
 
-		<section id="main" <?php if ($root_class) { echo(' class="' . $root_class . '"'); } ?>>
+		<section id="main">

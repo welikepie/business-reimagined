@@ -24,6 +24,7 @@ p { margin-bottom: @base-margin; }
 	display: block;
 	margin-bottom: (@base-margin * 0.5);
 	color: @theme-color;
+	font-size: 12px;
 
 	a {
 		display: inline-block !important;
@@ -58,7 +59,7 @@ body > header {
 	margin: @base-margin auto;
 	overflow: hidden;
 
-	h1 {
+	> a:first-child {
 		.sprite(logo);
 		float: left;
 	}
@@ -98,7 +99,7 @@ body > header {
 
 			font-size: 18px;
 			font-weight: bold;
-			line-height: 18px;
+			line-height: 16px;
 			color: white;
 			
 			span {
@@ -219,11 +220,15 @@ section#main {
 			}
 		}
 
-		p, ul, > img {
+		p, ul {
 			display: block;
 			margin: 0 0 @base-margin;
 		}
-		> img { width: 100%; }
+		img {
+			&.full { width: 100%; }
+			&.left { float: left; margin: 2px (@base-margin * 0.5) (@base-margin * 0.5) 0; }
+			&.right { float: right; margin: 2px 0 (@base-margin * 0.5) (@base-margin * 0.5); }
+		}
 	}
 
 	article.page { width: floor(@desktop-width * 0.75); }
