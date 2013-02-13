@@ -247,7 +247,7 @@
           colSpan, groupCount, groupY, groupColY, j;
 
       //how many columns does this brick span
-      colSpan = Math.ceil( $brick.outerWidth(true) / this.columnWidth );
+      colSpan = Math.round( $brick.outerWidth(true) / this.columnWidth );
       colSpan = Math.min( colSpan, this.cols );
 
       if ( colSpan === 1 ) {

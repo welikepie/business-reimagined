@@ -98,14 +98,15 @@ body > header {
 
 			font-size: 18px;
 			font-weight: bold;
-			line-height: 24px;
+			line-height: 18px;
 			color: white;
 			
 			span {
 				display: block;
 				float: left; clear: left;
-				padding: 0 8px 2px 0;
+				padding: 0 8px 6px 0;
 				background: @theme-color;
+				&:first-child { padding-top: 2px; }
 			}
 		}
 
@@ -132,7 +133,14 @@ section#main {
 	margin: @base-margin auto;
 	overflow: hidden;
 
-	&.single { width: floor(@desktop-width * 0.75); }
+	> h1 {
+		font-size: 18px;
+		line-height: 18px;
+		+ p {
+			width: floor(@desktop-width * 0.75);
+			margin-bottom: @base-margin * 2;
+		}
+	}
 
 	.listing {
 		display: block;
@@ -181,17 +189,22 @@ section#main {
 	}
 
 	article.blog {
+		width: floor(@desktop-width * 0.75);
 		header {
 			display: block;
 			overflow: hidden;
 			margin-bottom: (@base-margin * 0.5);
 
-			a.category {
+			.category {
 				display: block;
 
 				font-size: 14px;
 				line-height: 28px;
-				color: #5e5e5e;
+				a {
+					color: #5e5e5e;
+					text-decoration: none;
+					&:hover { text-decoration: underline; }
+				}
 			}
 			h1 {
 				float: left;
@@ -212,6 +225,8 @@ section#main {
 		}
 		> img { width: 100%; }
 	}
+
+	article.page { width: floor(@desktop-width * 0.75); }
 
 	form.contact {
 		width: 360px;
@@ -255,6 +270,7 @@ section#main {
 			.sprite(submit);
 		}
 	}
+	.wpcf7 { display: none; }
 
 }
 

@@ -26,6 +26,8 @@
 				<article id="post-<?php the_ID(); ?>" <?php post_class($class); ?>>
 				<?php if ($class === 'video') { ?>
 					<?php the_content(); ?>
+				<?php } elseif ($class === 'link') { ?>
+					<a target="_blank" href="<?php echo(get_page()->post_content); ?>"><img src="<?php echo($image); ?>" alt="<?php the_title(); ?>"></a>
 				<?php } else { ?>
 					<div class="share">
 						Join discussion

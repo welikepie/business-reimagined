@@ -33,8 +33,6 @@ window.init = function () {
 				}
 			}
 
-			console.log('Range: ', width, index);
-
 			if ((typeof index === 'number') && (index !== current_index)) {
 
 				current_index = index;
@@ -47,7 +45,7 @@ window.init = function () {
 					window.setTimeout(function () {
 						$('section#main .listing').masonry({
 							'itemSelector': 'article',
-							'columnWidth': parseInt($('section#main .listing > article:not(.double)')
+							'columnWidth': parseInt($('section#main .listing > article:not(.video)')
 								.css('width')
 								.replace(/^[^0-9]*([0-9]+)[^0-9]*$/i, "$1"), 10),
 							'gutterWidth': ranges[index].gutter
@@ -78,5 +76,16 @@ window.init = function () {
 		return false;
 
 	});
+
+	var new_form = $('form.contact'),
+		old_form = $('form.wpcf7-form');
+
+	if (new_form.length) {
+		old_form.find('input[type="hidden"]').detach().appendTo(new_form);
+		new_form
+			.attr('action', old_form.attr('action'))
+			.find('button')
+				.attr('value', old_form.find('input[type="submit"]').attr('value'));
+	}
 
 };

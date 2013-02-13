@@ -5,7 +5,6 @@
 	body > header,
 	.banner .wrapper,
 	section#main,
-	section#main.single,
 	body > footer .wrapper {
 		width: 95%;
 	}
@@ -24,6 +23,8 @@
 
 	section#main {
 
+		> h1 + p { width: 100%; }
+
 		.listing {
 			margin: 0;
 			> article {
@@ -34,6 +35,8 @@
 				&.video { width: 100%; }
 			}
 		}
+
+		article.blog, article.page { width: 100%; }
 
 		form.contact {
 			width: 100%;

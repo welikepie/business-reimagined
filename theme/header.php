@@ -36,4 +36,4 @@
 			</div>
 		</div>
 
-		<section id="main">
+		<section id="main" <?php if ($root_class) { echo(' class="' . $root_class . '"'); } ?>>

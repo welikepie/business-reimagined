@@ -21,7 +21,7 @@
 
 	section#main {
 
-		&.single { width: @tablet-width; }
+		> h1 + p { width: @tablet-width; }
 
 		.listing {
 			margin: 0 -@tablet-gutter 0 0;
@@ -42,6 +42,8 @@
 			}
 
 		}
+
+		article.blog, article.page { width: @tablet-width; }
 	}
 
 }

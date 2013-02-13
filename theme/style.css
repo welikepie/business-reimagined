@@ -729,16 +729,20 @@ body > header nav a + a {
   overflow: hidden;
   font-size: 18px;
   font-weight: bold;
-  line-height: 24px;
+  line-height: 18px;
   color: white;
 }
 
 .banner .wrapper p span {
   display: block;
   float: left;
-  padding: 0 8px 2px 0;
+  padding: 0 8px 6px 0;
   clear: left;
   background: #0c6baa;
+}
+
+.banner .wrapper p span:first-child {
+  padding-top: 2px;
 }
 
 .banner .wrapper:before {
@@ -759,8 +763,14 @@ section#main {
   overflow: hidden;
 }
 
-section#main.single {
+section#main > h1 {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+section#main > h1 + p {
   width: 768px;
+  margin-bottom: 32px;
 }
 
 section#main .listing {
@@ -830,17 +840,29 @@ section#main .listing > article p {
   font-size: 12px;
 }
 
+section#main article.blog {
+  width: 768px;
+}
+
 section#main article.blog header {
   display: block;
   margin-bottom: 8px;
   overflow: hidden;
 }
 
-section#main article.blog header a.category {
+section#main article.blog header .category {
   display: block;
   font-size: 14px;
   line-height: 28px;
+}
+
+section#main article.blog header .category a {
   color: #5e5e5e;
+  text-decoration: none;
+}
+
+section#main article.blog header .category a:hover {
+  text-decoration: underline;
 }
 
 section#main article.blog header h1 {
@@ -865,6 +887,10 @@ section#main article.blog > img {
 
 section#main article.blog > img {
   width: 100%;
+}
+
+section#main article.page {
+  width: 768px;
 }
 
 section#main form.contact {
@@ -911,6 +937,10 @@ section#main form.contact button {
   border: none;
 }
 
+section#main .wpcf7 {
+  display: none;
+}
+
 body > footer {
   display: block;
   width: 100%;
@@ -945,7 +975,7 @@ body > footer .wrapper .sponsors {
   body > header nav a + a {
     margin-left: 16px;
   }
-  section#main.single {
+  section#main > h1 + p {
     width: 700px;
   }
   section#main .listing {
@@ -964,13 +994,16 @@ body > footer .wrapper .sponsors {
     width: 462.66666666666663px;
     height: 300px;
   }
+  section#main article.blog,
+  section#main article.page {
+    width: 700px;
+  }
 }
 
 @media (max-width: 699px) {
   body > header,
   .banner .wrapper,
   section#main,
-  section#main.single,
   body > footer .wrapper {
     width: 95%;
   }
@@ -990,6 +1023,9 @@ body > footer .wrapper .sponsors {
     margin-top: 2px;
     margin-left: 0;
   }
+  section#main > h1 + p {
+    width: 100%;
+  }
   section#main .listing {
     margin: 0;
   }
@@ -1002,6 +1038,10 @@ body > footer .wrapper .sponsors {
     width: 100%;
   }
   section#main .listing > article.video {
+    width: 100%;
+  }
+  section#main article.blog,
+  section#main article.page {
     width: 100%;
   }
   section#main form.contact {
