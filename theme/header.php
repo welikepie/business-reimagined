@@ -25,7 +25,7 @@
 				echo('<a href="' . $item->url . '">' . $item->title . '</a>');
 			} ?></nav>
 		</header>
-		<div class="banner">
+		<?php if (isset($banner)) { ?><div class="banner">
 			<div class="wrapper">
 				<p>
 					<span>Lorem ipsum dolor sit amet,</span>
@@ -34,6 +34,6 @@
 					<span>Duis nec eros ante, quis vulputate turpis.</span>
 				</p>
 			</div>
-		</div>
+		</div><?php } ?>
 
 		<section id="main">

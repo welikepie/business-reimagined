@@ -57,7 +57,7 @@ window.init = function () {
 		};
 
 	$(window).smartresize(masonry_func);
-	masonry_func();
+	$('.listing').imagesLoaded(masonry_func);
 
 	// Handlers for sharing functionality of posts in a listing.
 	// URL for sharing an appropriate post is already put in HREF attribute.

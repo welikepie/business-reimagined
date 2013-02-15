@@ -116,7 +116,7 @@ module.exports = function (grunt) {
 		
 		'copy': {
 			'html': { 'files': { 'build/layouts/': 'layouts/*.htm' } },
-			'images': { 'files': { 'build/images/': ['images/*.png', 'images/*.jpg'] } },
+			'images': { 'files': { 'build/images/': ['images/**/*.png', 'images/**/*.jpg'] } },
 			'scripts': { 'files': { 'build/scripts/': 'scripts/other/**/*' } }/*,
 			'css': { 'files': { 'build/styles/': 'styles/*.css' } }*/
 		},
