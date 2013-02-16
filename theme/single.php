@@ -14,6 +14,13 @@
 							if ($tag->name !== 'Index') { echo('<a href="' . get_tag_link($tag->term_id) . '" rel="tag">' . $tag->name . '</a>'); }
 						} ?>
 					</div>
+
+					<?php
+						$authors = implode(', ', get_post_meta(get_the_ID(), 'Author', false));
+						if (strlen($authors)) {
+							echo('<div class="authors">' . $authors . '</div>');
+						}
+					?>
 				</header>
 
 				<?php the_content('', false); ?>

@@ -13,6 +13,13 @@
 					'text' => $wp_query->post->post_title
 				));
 				$image = get_post_thumbnail_id();
+				if ($image) {
+					$image = wp_get_attachment_image_src($image, 'large');
+					$facebook_share['p[images][0]'] = $image[0];
+					$image = $image[0];
+				} else {
+					$image = '';
+				}
 			?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class($class); ?>>
 				<?php if ($class === 'video') { ?>
@@ -35,12 +42,10 @@
 					<?php
 						the_content();
 						$meta = array();
-						foreach (get_post_custom() as $key => $val) { if ($key[0] !== '_') { $meta[$key] = $val; } }
+						foreach (get_post_custom() as $key => $val) { if (($key[0] !== '_') && ($key !== 'Author')) { $meta[$key] = $val; } }
 						if (count($meta)) {
 							echo('<div class="meta">');
-							foreach ($meta as $key => &$values) {
-								echo('<p><span>' . $key . ':</span> ' . implode(', ', $values) . '</p>');
-							}
+							foreach ($meta as $key => &$values) { echo('<p><span>' . $key . ':</span> ' . implode(', ', $values) . '</p>'); }
 							echo('</div>');
 						}
 					?>
