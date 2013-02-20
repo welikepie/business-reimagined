@@ -20,27 +20,46 @@
 				} else {
 					$image = '';
 				}
+
+				if ($class === 'link') {
+					if (!get_the_content()) { $class .= ' single'; }
+				} elseif ($class === 'video') {
+					if (!get_the_title()) { $class .= ' single'; }
+				}
 			?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class($class); ?>>
-				<?php if ($class === 'video') { ?>
+				<?php if (($class === 'video') || ($class === 'video single')) { ?>
+					<div class="content"><?php echo(get_the_content()); ?></div>
+					<?php
+						$title = get_the_title();
+						if ($title) {
+					?>
 					<div class="category">- <?php the_category(' - '); ?></div>
 					<h1><?php the_title(); ?></h1>
-					<div class="content"><?php echo(get_the_content()); ?></div>
-				<?php } elseif ($class === 'link') { ?>
-					<a target="_blank" href="<?php echo(get_page()->post_content); ?>"><img src="<?php echo($image); ?>" alt="<?php the_title(); ?>"></a>
-				<?php } else { ?>
+					<?php }
+				} elseif (($class === 'link') || ($class === 'link single')) {
+					$link = get_post_meta(get_the_ID(), 'Link', true);
+					$content = get_the_content();
+					
+					if ($link) {
+						echo('<a href="' . $link . '" target="_blank">' .
+							'<img src="' . $image . '" alt="' . get_the_title() . '">' .
+						'</a>');
+					}
+					if ($content) {
+						echo('<p>' . $content . '</p>');
+					}
+				} else { ?>
+					<a href="<?php echo(get_permalink()); ?>"><img src="<?php echo($image); ?>" alt="<?php the_title(); ?>"></a>
 					<div class="category">- <?php the_category(' - '); ?></div>
 					<div class="share">
 						Join discussion
 						<a href="<?php echo($twitter_share); ?>" target="_blank" class="twitter">Share to Twitter</a>
 					</div>
-					<a href="<?php echo(get_permalink()); ?>">
-						<h1><?php the_title(); ?></h1>
-						<img src="<?php echo($image); ?>" alt="<?php the_title(); ?>">
-					</a>
+					<a href="<?php echo(get_permalink()); ?>"><h1><?php the_title(); ?></h1></a>
 
 					<?php
-						the_content();
+						echo('<p>' . get_the_excerpt() . '</p>');
 						$meta = array();
 						foreach (get_post_custom() as $key => $val) { if (($key[0] !== '_') && ($key !== 'Author')) { $meta[$key] = $val; } }
 						if (count($meta)) {

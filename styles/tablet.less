@@ -30,13 +30,14 @@
 			> article {
 
 				width: @column-width;
+				min-height: @tablet-tileheight;
 				margin: 0 @tablet-gutter (@tablet-gutter * 2) 0;
 				overflow: hidden;
 
-				&.double { width: @tablet-width - @column-width - @tablet-gutter; }
 				&.video {
 					width: @tablet-width - @column-width - @tablet-gutter;
-					height: 300px;
+					div.content { height: @tablet-tileheight - 54; }
+					&.single div.content { height: @tablet-tileheight - 2; }
 				}
 
 			}

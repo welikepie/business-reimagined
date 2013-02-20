@@ -28,10 +28,10 @@
 		<?php if (isset($banner)) { ?><div class="banner">
 			<div class="wrapper">
 				<p>
-					<span>Lorem ipsum dolor sit amet,</span>
-					<span>consectetur adipiscing elit.</span>
-					<span>Nam tempor tincidunt tempor.</span>
-					<span>Duis nec eros ante, quis vulputate turpis.</span>
+					<span>If you started your business again,</span>
+					<span>what would you keep the same,</span>
+					<span>and what would you reimagine?</span>
+					
 				</p>
 			</div>
 		</div><?php } ?>

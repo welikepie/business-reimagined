@@ -457,4 +457,7 @@ function build_url ($base, $params) {
 	return $base . $url;
 
 }
+
+function custom_excerpt_length ($length) { return 24; }
+add_filter('excerpt_length', 'custom_excerpt_length', 999);
 ?>
